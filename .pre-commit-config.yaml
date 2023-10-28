@@ -1,0 +1,35 @@
+# Note the order is intentional to avoid multiple passes of the hooks
+repos:
+- repo: meta
+  hooks:
+  - id: check-hooks-apply
+  - id: check-useless-excludes
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.5.0
+  hooks:
+  - id: check-added-large-files
+  - id: check-case-conflict
+  - id: check-shebang-scripts-are-executable
+  - id: check-yaml
+  - id: check-vcs-permalinks
+  - id: detect-private-key
+  - id: end-of-file-fixer
+  - id: mixed-line-ending
+  - id: fix-byte-order-marker
+  - id: check-merge-conflict
+  - id: trailing-whitespace
+    args: [--markdown-linebreak-ext=md]
+- repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+  rev: v2.11.0
+  hooks:
+  - id: pretty-format-yaml
+    args: [--autofix, --indent, '2']
+- repo: https://github.com/mrtazz/checkmake
+  rev: 0.2.2
+  hooks:
+  - id: checkmake
+- repo: https://github.com/pre-commit/mirrors-clang-format
+  rev: v17.0.3
+  hooks:
+  - id: clang-format
+    types_or: [c, c++]
